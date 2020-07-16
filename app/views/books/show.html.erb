@@ -1,0 +1,25 @@
+<h5>Book was successfully created.</h5><br>
+
+<h1>Book detail</h1>
+<table>
+	<thead>
+		 <tr>
+			<th>Title<%= @book.title %></th>
+            <th>Opinion<%= @book.body %></th>
+        </tr>
+    </thead>
+     <tbody>
+     	<tr>
+            <td>
+            <%= link_to "Edit", edit_book_path(@book) %>
+            </td>
+            <td>
+            <%= link_to "Destroy", book_path(@book), method: :delete, "date-confirm" => "本当に削除しますか？" %>
+            </td>
+		 </tr>
+	</tbody>
+</table>
+
+
+
+
