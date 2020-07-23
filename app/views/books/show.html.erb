@@ -1,25 +1,36 @@
-<h5>Book was successfully created.</h5><br>
-
-<h1>Book detail</h1>
-<table>
+<p>
+  <%= notice %>
+</p>
+<%= render 'books/list', book: @book_new, user: @book.user %>
+<div class="col-xs-9" style="background-color: white;">
+<h3>Book detail</h3>
+<table class="table table-hover table-inverse">
 	<thead>
 		 <tr>
-			<th>Title<%= @book.title %></th>
+      <td>
+			<%= link_to user_path(@user) do %>
+              <%= attachment_image_tag @user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg", size: '50x50' %><br>
+              <%= @user.name %>
+              <% end %>
+      </td>
+      <th>Title<%= @book.title %></th>
             <th>Opinion<%= @book.body %></th>
         </tr>
     </thead>
      <tbody>
      	<tr>
+        <% if @user.id == current_user.id %>
             <td>
             <%= link_to "Edit", edit_book_path(@book) %>
             </td>
             <td>
-            <%= link_to "Destroy", book_path(@book), method: :delete, "date-confirm" => "本当に削除しますか？" %>
+            <%= link_to "Destroy", book_path(@book), method: :delete, data: {confirm: "削除しますか？"} %>
             </td>
+        <% end %>
 		 </tr>
 	</tbody>
 </table>
-
+</div>
 
 
 
