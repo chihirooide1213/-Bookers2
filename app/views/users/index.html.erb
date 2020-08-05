@@ -1,4 +1,6 @@
+
     <%= render 'books/list', book: @book, user: @user %>
+    <!-- <h1 class="jquery">Hello jQuery!</h1> -->
     <h2>Users</h2>
     　<div class="col-xs-9" style="background-color: white;">
         <table class="table table-hover table-inverse">
@@ -12,7 +14,7 @@
        <tbody>
         <% @users.each do |user| %>
             <tr>
-              <td><%= attachment_image_tag @book.user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg", size: '50x50' %></td>
+              <td><%= attachment_image_tag user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg", size: '50x50' %></td>
               <td><%= user.name %></td>
               <td><%= link_to "Show", user_path(user.id) %></td>
             </tr>

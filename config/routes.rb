@@ -5,7 +5,13 @@ Rails.application.routes.draw do
   # get 'post_comments/destroy'
 
   devise_for :users
-  resources :users
+
+  resources :users do
+  	resource :relationships, only: [:create, :destroy]
+    get :follows, on: :member
+    get :followers, on: :member
+  end
+
   root 'homes#top'
   get '/home/about', to: 'homes#about'
   resources :books	do
