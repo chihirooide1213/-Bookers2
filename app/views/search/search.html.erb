@@ -1,0 +1,39 @@
+<div class="container">
+<% if @user_or_book == "1" %>
+    <h1>User</h1>
+    <table class="table table-hover table-inverse">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>name</th>
+                <th></th>
+            </tr>
+        </thead>
+        <% @users.each do |user| %>
+        <tbody>
+            <td><%= attachment_image_tag user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg", size: '50x50' %></td>
+            <td><%= user.name %></td>
+            <td><%= link_to "Show", user_path(user.id) %></td>
+        </tbody>
+        <% end %>
+    </table>
+<% elsif @user_or_book == "2" %>
+    <h2>Book</h2>
+    <table class="table table-hover table-inverse">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th></th>
+            </tr>
+        </thead>
+    <% @books.each do |book| %>
+    <tbody>
+        <td><%= attachment_image_tag book.user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg", size: '50x50' %></td>
+        <td><%= book.title %></td>
+        <td><%= link_to "Show", book_path(book.id) %></td>
+    </tbody>
+    <% end %>
+    </table>
+<% else %>
+<% end %>
+</div>
